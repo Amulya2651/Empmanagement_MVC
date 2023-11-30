@@ -1,0 +1,31 @@
+﻿<h1> Employee Details </h1>
+
+<button class="btn btn-primary" onclick="getEmployee()"> Show Employees </button>
+<table class="table table-bordered table-striped"></table>
+
+
+<script>
+    function getEmployee() {
+        var url = "https://localhost:7167/api/Employees";
+
+        fetch(url).then(dataType => dataType.json())
+            .then(productsResult => {
+
+                for (var i = 0; i < productsResult.length; i++) {
+                    $("table").append("<tr>" +
+                        "<td>" + productsResult[i].empno + "</td>" +
+                        "<td>" + productsResult[i].empname + "</td>" +
+                        "<td>" + productsResult[i].empdesignation + "</td>" +
+                        "<td>" + productsResult[i].empsalary + "</td>" +
+                        "<td>" + productsResult[i].deptno + "</td>" +
+                        "<td>" + productsResult[i].empispermenant + "</td>" +
+
+                        + "</tr>")
+                }
+
+            })
+
+
+
+    }
+</script>
